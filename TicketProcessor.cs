@@ -11,7 +11,6 @@ namespace TicketManager
     internal class TicketProcessor
     {
         private List<ServiceTicket> _tickets = new List<ServiceTicket>();
-        //private List<ServiceTicket> _closedTickets = new List<ServiceTicket>();
         private int _nextId = 1;
         private readonly TicketStorage _storage;
         private readonly string _filePath;
@@ -80,8 +79,6 @@ namespace TicketManager
 
                     if (IsFinalStatus(newStatus))
                     {
-                        //_closedTickets.Add(_tickets[i]);
-                        //_tickets.RemoveAt(i);
                         string closedFilePath = "closedTickets.json";
                         _storage.SaveTicketToFile(_tickets, closedFilePath);
                     }
@@ -117,7 +114,6 @@ namespace TicketManager
                     return true;
                 }
             }
-           
             return false;
         }
     }
